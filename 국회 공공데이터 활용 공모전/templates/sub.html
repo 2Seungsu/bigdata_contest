@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sub Page</title>
+    <link rel="stylesheet" href="../static/css/sub.css"> <!-- Link to your CSS file -->
+
+    <!-- jQuery CDN 추가 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- jQuery UI CSS 및 JS 추가 -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        #ui-datepicker-div{
+            position: relative;
+            z-index:5000 !important;
+
+        }
+    </style>
+
+    <script>
+                
+        class WRequest{
+            constructor(dst_url){
+                this.__dst_url = dst_url;
+                this.__formdata = new FormData();
+                this.__function = function(result){};
+
+                let __connection = new XMLHttpRequest();
+                this.__connection = __connection;
+
+                let __this = this;
+                this.__connection.onload = function(){
+
+                    let result = __connection.responseText;
+                    __this.__function(result);
+
+                }
+
+
+
+            }
+
+            add_data(key, value){
+                this.__formdata.append(key,value);
+            }
+
+            del_data(key){
+                this.__formdata.del(key);
+            }
+
+            set_callback(func){
+                this.__function = func;
+            }
+
+            request(){
+                this.__connection.open("POST",this.__dst_url,true);
+                this.__connection.send(this.__formdata);
+
+            }
+
+
+
+
+        }
+
+</script>
+</head>
+<body>
+    <div id="logo">
+        <a href="main.html">
+            <img src="../static/image/logo.png" alt="logo">
+        </a>
+
+    <form method="POST" action="/submit" id="formID">
+        <div id="date">
+            <span id="dateForm">
+                <label for="yyyymm">date</label>
+                <!-- Input window for entering a keyword -->
+                <input type="text" name="date_input" id="yyyymm" placeholder="Type your keyword here">
+            </span>
+        </div>
+        
+
+        <div id="keyword">
+            <span id="KeyWordForm">
+
+                <label for="search">Keyword</label>
+                <!-- 텍스트 입력 상자로 변경 -->
+                <input type="text" name="keyword_input" id="search" placeholder="Type your keyword here">
+                <img src="../static/image/search.png" alt="submit" id="submitButton" style="cursor: pointer;" onclick="clicksubmit();">
+                
+            </span>
+        </div>
+    </form>
+    
+    <div id = "pictogram">
+        <img class="picto" src="../static/image/picto_circle.png" alt="logo">
+    </div>    
+    
+    <div id="box">
+        <div class='wave -one'></div>
+        <div class='wave -two'></div>
+        <div class='wave -three'></div>
+        <div>
+            <img id="dda" src="../static/image/dda.png">
+            <div class='pictogram_content'>공문서를 분석해볼까요?</div>
+        </div>
+    </div>
+
+    <script>
+
+        function clicksubmit(){
+            document.getElementById('formID').submit();
+        }
+
+
+    </script>
+
+
+</body>
+</html>

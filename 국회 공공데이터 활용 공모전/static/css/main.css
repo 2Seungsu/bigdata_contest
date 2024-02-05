@@ -1,0 +1,208 @@
+@font-face {
+    font-family: 'Tenada';
+    src: url('../static/font/Tenada.ttf') format('truetype');
+  }
+
+  body::-webkit-scrollbar {
+    width: 0;
+  }
+
+  body {
+    background-image: url('../image/main_background.jpg'); /* Replace with the actual path to your image */
+    background-size: cover; /* Adjust as needed */
+    background-position: center; /* Adjust as needed */
+    background-repeat: no-repeat; /* Prevent image from repeating */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    font-family: Arial, sans-serif; /* Set a default font family */
+    height: 1000px;
+    width: 1000px;
+  }
+  
+  #logo {
+    position: absolute;
+    height: 300px; /* Adjust the height as needed */
+    width: 300px; /* Adjust the width as needed */
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  
+  #logo img {
+    max-width: 100%; /* Ensure the image doesn't exceed its container */
+    height: auto; /* Maintain the aspect ratio */
+  }
+  
+  #main{
+    color: white;
+    font-size: 90px;
+    position: absolute;
+    width:100%;
+    text-align: center;
+    top:230px;
+    font-family: 'Tenada', sans-serif;
+  }
+  
+  #sub_title{
+    color: white;
+    font-size: 35px;
+    position: absolute;
+    width:100%;
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Tenada', sans-serif;
+  }
+  
+  #startButton {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: white;
+    color: #fc900d;  /* 폰트 색깔 */
+    color: white;
+    position: relative;
+    cursor: pointer;
+    margin-top:350px;
+    transition: background-color 0.3s ease; /* 부드럽게 변함 */
+    & {
+        background-color: #FFAC03;
+    }
+  }
+  
+  #startButton span:nth-child(1) {
+    position:absolute;
+    border-top:absolute;
+    border-bottom:7px solid white;
+    top:0%;
+    width:0%;
+    left:0%;
+    transition:0.2s;
+  }
+  #startButton:hover span:nth-child(1){
+    left:0%;
+    width:100%;
+  }
+  
+  
+  #startButton span:nth-child(2) {
+    position: absolute;
+    border-right: 7px solid white;
+    top: 0;
+    right: 0;
+    bottom: 100%;
+    transition: 0.2s;
+  }
+  #startButton:hover span:nth-child(2) {
+    bottom: 0%;
+  }
+  
+  #startButton span:nth-child(3) {
+    position: absolute;
+    border-bottom: 7px solid white;
+    bottom: 0;
+    left: 100%;
+    right: 0;
+    transition: 0.2s;
+  }
+  #startButton:hover span:nth-child(3) {
+    left: 0%;
+  }
+  
+  #startButton span:nth-child(4) {
+    position: absolute;
+    border-left: 7px solid white;
+    top: 100%;
+    left: 0;
+    bottom: 0;
+    transition: 0.2s;
+  }
+  #startButton:hover span:nth-child(4) {
+    top: 0%;
+  }
+  
+  
+  #startButton span:nth-child(1) {
+    transition-delay: 0.3s
+  }
+  #startButton:hover span:nth-child(1) {
+    transition-delay: 0s;
+  }
+  
+  #startButton span:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+  #startButton:hover span:nth-child(2) {
+    transition-delay: 0.1s;
+  }
+  
+  #startButton span:nth-child(3) {
+    transition-delay: 0.1s;
+  }
+  #startButton:hover span:nth-child(3) {
+    transition-delay: 0.2s;
+  }
+  
+  #startButton span:nth-child(4) {
+    transition-delay: 0s;
+  }
+  #startButton:hover span:nth-child(4) {
+    transition-delay: 0.3s;
+  }
+  
+  
+  
+  .div_text{
+    display:inline-block;
+    /* enter가 안 되도록 설정 */
+    src: url('../static/font/Tenanda.ttf') format('truetype');
+  }
+  
+  #hot{
+    position: relative;
+    color: #FFAC03;
+  
+    animation: ANI1 1.8s ease-in-out infinite;
+  /*
+    linear
+    ease-in
+    ease-out
+    ease-in-out
+  
+  */
+  }
+  
+  #merong{
+  
+    display:inline-block;
+    position: absolute;
+    top:0px;
+    left:0px;
+  
+  }
+  
+  
+  @keyframes ANI1 {
+    0%{
+       
+        color: rgba(255,255,255,1);
+        /*transform: rotate(0deg);*/
+  
+        transform: translate(0px,0px);
+    }
+    50%{
+        
+        color: #FFAC03;
+  
+        transform: translate(0px,-30px);
+        /*
+        transform: rotate(360deg);*/
+    }
+    100%{
+        
+        color: #FFAC03;
+  
+        transform: translate(0px,30px);
+        /*
+        transform: rotate(360deg);*/
+    }
+  }
+  
+  /* main.css */

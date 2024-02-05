@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeyWord Page</title>
+    <link rel="stylesheet" href="../static/css/keyword1.css"> <!-- Link to your CSS file -->
+
+    <!-- jQuery CDN 추가 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- jQuery UI CSS 및 JS 추가 -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+    <script>
+                
+        class WRequest{
+            constructor(dst_url){
+                this.__dst_url = dst_url;
+                this.__formdata = new FormData();
+                this.__function = function(result){};
+
+                let __connection = new XMLHttpRequest();
+                this.__connection = __connection;
+
+                let __this = this;
+                this.__connection.onload = function(){
+
+                    let result = __connection.responseText;
+                    __this.__function(result);
+
+                }
+
+
+
+            }
+
+            add_data(key, value){
+                this.__formdata.append(key,value);
+            }
+
+            del_data(key){
+                this.__formdata.del(key);
+            }
+
+            set_callback(func){
+                this.__function = func;
+            }
+
+            request(){
+                this.__connection.open("POST",this.__dst_url,true);
+                this.__connection.send(this.__formdata);
+
+            }
+
+
+
+
+        }
+
+</script>
+</head>
+<body>
+    <div id="logo">
+        <a href="main.html">
+            <img src="../static/image/logo.png" alt="logo">
+        </a>
+    </div>
+
+    <div class="date-picker-container">
+    
+        <img class="cal" src="../static/image/calendar.png">
+        <!-- <label for="start-date">시작 날짜:</label> -->
+        <input type="text" id="start-date" placeholder="시작일" readonly value="{{ _start_date }}">
+
+        <!-- 여백추가 -->
+        <div class="date-picker-space"> - </div>
+
+        <img class="cal" src="../static/image/calendar.png">
+        <!-- <label for="end-date">종료 날짜:</label> -->
+        <input type="text" id="end-date" placeholder="종료일" readonly value="{{ _end_date }}">
+    </div>
+    
+    <!-- <div id="keyword">
+        <span id="KeyWordForm">
+            <label for="lang">KeyWord</label>
+            <select name="languages" id="lang">
+                <option value="KeyWord_1">KeyWord 1</option>
+                <option value="KeyWord_2">KeyWord 2</option>
+                <option value="KeyWord_3">KeyWord 3</option>
+                <option value="KeyWord_4">KeyWord 4</option>
+                <option value="KeyWord_5">KeyWord 5</option>
+            </select>
+            <img src="../static/image/search.png" alt="submit" id="submitButton" style="cursor: pointer;">
+        </span>
+    </div> -->
+    <div id="keyword">
+        <span id="KeyWordForm">
+            <label for="lang">Keyword</label>
+            <!-- 텍스트 입력 상자로 변경 -->
+            <input type="text" id="search" placeholder="Type your keyword here">
+            <img src="../static/image/search.png" alt="submit" id="submitButton" style="cursor: pointer;">
+        </span>
+    </div>
+
+
+
+    <div id="News">
+        <div class="title">News &nbsp; List</div>
+        <ul>
+
+            {% for x in result %}
+
+                <li>
+                    <a id="newsList" href='/news1_result.html?title={{x[0]}}&text={{x[1]}}'>{{x[0]}}</a>
+                </li>
+
+            {% endfor %}
+        </ul>
+    </div>
+
+    <script>
+        document.getElementById('submitButton').addEventListener('click', function() {
+            // Get the selected option value
+            var selectedOption = document.getElementById('lang').value;
+            let indexRealINNERHTML = document.getElementById('lang')[document.getElementById('lang').selectedIndex].innerHTML;
+            
+            let start_date_value = document.getElementById("start-date").value;
+            let end_date_value = document.getElementById("end-date").value;
+            console.log("요청" + selectedOption);
+            
+            // Redirect based on the selected option
+            window.location.href = 'KeyWord1.html?start_date=' + start_date_value + "&end_date=" + end_date_value + "&value=" + indexRealINNERHTML;
+    
+        });
+
+        // 달력 위젯
+        $( function() {
+        // 시작 날짜와 종료 날짜를 선택할 수 있는 달력 위젯 초기화
+        $( "#start-date" ).datepicker({
+            dateFormat: 'yy-mm-dd',
+            onSelect: function(selected) {
+        // 시작 날짜 선택 시, 종료 날짜 달력에서 시작 날짜 이전 날짜 선택 불가능하도록 설정
+        $("#end-date").datepicker("option","minDate", selected);
+        fuc();
+      }
+    });
+        $( "#end-date" ).datepicker({
+            dateFormat: 'yy-mm-dd',
+            onSelect: function(selected) {
+        // 종료 날짜 선택 시, 시작 날짜 달력에서 종료 날짜 이후 날짜 선택 불가능하도록 설정
+        $("#start-date").datepicker("option","maxDate", selected);
+        fuc();
+      }
+    });
+  });
+   function fuc(){
+    let start_date_value = document.getElementById("start-date").value;
+    let end_date_value = document.getElementById("end-date").value;
+
+
+    if(start_date_value=="" || end_date_value==""){
+
+    }else{
+        let wrequest = new WRequest("/request_date");
+        wrequest.add_data("start_date",start_date_value);
+        wrequest.add_data("end_date",end_date_value);
+
+        wrequest.set_callback(function(e){
+
+            let json = JSON.parse(e);
+            console.log(json);
+
+
+            document.getElementById("lang").innerHTML ="";
+            let _li = ["KeyWord_1", "KeyWord_2", "KeyWord_3", "KeyWord_4", "KeyWord_5"];
+            for (let i=0;i<json.length;i=i+1){
+
+                let data = json[i];
+
+                let option_tag = document.createElement("option");
+                option_tag.setAttribute("value",_li[i]);
+                option_tag.innerHTML=data;
+
+                document.getElementById("lang").appendChild(option_tag);
+
+
+
+            }
+
+            if(bool_is_set==false){
+                set_now_value();
+                bool_is_set=true;
+            }
+        }
+        );
+
+        wrequest.request();
+
+    }
+
+  }
+
+
+        // 뒤로가기 시 체크박스 초기화
+        window.addEventListener('pageshow', function (event) {
+            
+                // 페이지가 캐시에서 복원되었습니다 (뒤로 이동)
+                var newsCheckboxes = document.querySelectorAll('.news-checkbox');
+                newsCheckboxes.forEach(function (checkbox) {
+                    checkbox.checked = false;
+                    sessionStorage.removeItem(checkbox.id);
+                });
+            
+            // 디버깅
+            // console.log("OK테스트")
+        });
+
+        let bool_is_set=false;
+        setTimeout(function(){
+
+            fuc();
+         
+            
+        },100);
+
+        function set_now_value(){
+            
+                
+            let tempdata = "{{value}}";
+                console.log(tempdata);
+                let doc1 = document.getElementById("lang");
+                for(let i=0;i<5;i++){
+                    let data = doc1[i].innerHTML
+                    console.log(data);
+                    if(data==tempdata){
+                        doc1.selectedIndex=i;
+                    }
+
+                }
+        }
+
+
+    </script>
+</body>
+</html>

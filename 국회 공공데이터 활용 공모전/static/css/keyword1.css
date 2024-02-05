@@ -1,0 +1,141 @@
+@font-face {
+    font-family: 'Tenada';
+    src: url('../static/font/Tenada.ttf') format('truetype');
+}
+
+body::-webkit-scrollbar {
+    width: 0;
+}
+
+#logo {
+    position: absolute;
+    height: 300px; /* Adjust the height as needed */
+    width: 300px; /* Adjust the width as needed */
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#logo img {
+    max-width: 100%; /* Ensure the image doesn't exceed its container */
+    height: auto; /* Maintain the aspect ratio */
+}
+
+#keyword {
+    text-align: center; /* Center the form content */
+    font-family: 'Tenada', sans-serif;
+}
+
+select {
+    margin-bottom: 20px;
+    margin-top: 60px;
+    width: 200px; /* Set the width of the select element */
+    margin-left: 10px;
+    font-family: 'Tenada', sans-serif;
+}
+
+#submitButton {
+    cursor: pointer;
+    position: absolute;
+    width: 50px;
+    height: 40px;
+    margin-top: 45px;
+    margin-left: 20px;
+    font-family: 'Tenada', sans-serif;
+}
+
+#News {
+    margin-top: 80px;
+    font-family: 'Tenada', sans-serif;
+    text-align: center;
+
+}
+
+.title {
+    font-size: 50px;
+}
+
+ul {
+    display: inline-block;
+    list-style: none;
+    padding: 15px;
+    margin-bottom: 33px;
+    margin-top: 40px;
+    font-family: 'Tenada', sans-serif;
+
+    text-align: center;    /* Center the content horizontally */
+    border: 5px solid orange; /* Add a border around the content */
+
+}
+
+
+li {
+    margin-top: 25px; /* 각 news별 간격 띄우기 */
+    margin-bottom: 25px; /* 각 news별 간격 띄우기 */
+}
+
+#newsList {
+    color: black;
+    font-size: 20px;
+    text-decoration: none;
+
+}
+
+#newsList:hover {
+    color: orange;
+}
+
+
+#KeyWordForm select {
+    width: 200px; /* Make the select element fill the width of the form */
+    padding: 8px; /* Adjust the padding as needed */
+    font-size: 16px; /* Adjust the font size as needed */
+    margin-top:95px;
+    font-family: 'Tenada', sans-serif;
+}
+
+
+#submitButton {
+    cursor: pointer;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 50px;
+    margin-left: 20px;
+    font-family: 'Tenada', sans-serif;
+}
+
+/* */
+
+.date-picker-container {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 650px;
+    margin-top:22px;
+    font-family: 'Tenada', sans-serif;
+}
+
+.date-picker-container input {
+    margin-bottom: 10px;
+    margin-top:22px;
+    font-family: 'Tenada', sans-serif;
+}
+
+.date-picker-space {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top:22px;
+    font-family: 'Tenada', sans-serif;
+}
+
+.cal {
+    height: 25px;
+    width: 25px;
+    margin-top:20px;
+    padding-right: 3px;
+}
+
+
+
+

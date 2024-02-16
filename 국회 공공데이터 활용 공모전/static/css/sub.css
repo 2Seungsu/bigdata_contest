@@ -1,0 +1,218 @@
+@font-face {
+    font-family: 'Tenada';
+    src: url('../font/Tenada.ttf') format('truetype');
+}
+
+body::-webkit-scrollbar {
+    width: 0;
+}
+
+#logo {
+    position: absolute;
+    height: 200px; /* Adjust the height as needed */
+    width: 200px; /* Adjust the width as needed */
+    margin-top: -10px;
+    margin-left: -10px;
+  }
+
+#logo img {
+    max-width: 100%; /* Ensure the image doesn't exceed its container */
+    height: auto; /* Maintain the aspect ratio */
+}
+
+#keyword {
+    position: relative;
+    text-align: center; /* Center the form content */
+    font-family: 'Tenada', sans-serif;
+    margin-bottom: 20px;
+    top: 100px;
+    left: -100px;
+}
+
+select {
+    margin-bottom: 20px;
+    margin-top: 60px;
+    width: 200px; /* Set the width of the select element */
+    margin-left: 10px;
+    font-family: 'Tenada', sans-serif;
+}
+
+#submitButton {
+    cursor: pointer;
+    position: absolute;
+    width: 50px;
+    height: 40px;
+    top: -120px;
+    margin-left: 20px;
+    font-family: 'Tenada', sans-serif;
+}
+
+#document img {
+    width: 920px;
+    height: 920px;
+    margin-left: 130px;
+    margin-top: 145px;
+    max-width: 200%; /* 이미지를 더 크게 만듭니다. */
+    height: auto;
+    position: relative;
+    z-index: 600; /* wave 요소보다 더 높은 z-index 값을 설정하여 이미지가 더 앞에 나오도록 합니다. */
+}
+
+.wave {
+    opacity: 0.1;
+    position: absolute;
+    top: 560px;
+    left: 27%;
+    background: orange;
+    width: 500px;
+    height: 500px;
+    margin-left: -300px;
+    margin-top: -350px;
+    transform-origin: 50% 48%;
+    border-radius: 43%;
+    animation: drift 3000ms infinite linear;
+    z-index: 500;
+}
+
+.wave.-three {
+    animation: drift 5000ms infinite linear;
+    opacity: 0.33;
+}
+
+.wave.-two {
+    animation: drift 7000ms infinite linear;
+    opacity: 0.1;
+    background: yellow;
+}
+
+#pictogram_content {
+    position: absolute;
+    margin-top: 330px;
+    left: 800px;
+    font-size: 30px;
+    font-family: 'Tenada', sans-serif;
+}
+
+
+#KeyWordForm select {
+    width: 200px; /* Make the select element fill the width of the form */
+    padding: 8px; /* Adjust the padding as needed */
+    font-size: 16px; /* Adjust the font size as needed */
+    margin-top:95px;
+    font-family: 'Tenada', sans-serif;
+}
+
+#submitButton {
+    width: 50px; /* Adjust the width of the image as needed */
+    height: 50px; /* Adjust the height of the image as needed */
+    margin-top:105px;
+    font-family: 'Tenada', sans-serif;
+}
+
+/* */
+
+.date-picker-container {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 750px;
+    margin-top:22px;
+    font-family: 'Tenada', sans-serif;
+}
+
+.date-picker-container input {
+    margin-bottom: 10px;
+    margin-top:22px;
+    font-family: 'Tenada', sans-serif;
+}
+
+.date-picker-space {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top:22px;
+    font-family: 'Tenada', sans-serif;
+}
+
+.cal {
+    height: 25px;
+    width: 25px;
+    margin-top:20px;
+    padding-right: 3px;
+}
+
+/* sub.css */
+
+/* Add keyframes for the yellow wave animation */
+@keyframes yellowWave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.box {
+width: 300px;
+height: 300px;
+border-radius: 5px;
+box-shadow: 0 2px 30px rgba(black, .2);
+background: lighten(#f0f4c3, 10%);
+position: relative;
+overflow: hidden;
+transform: translate3d(0, 0, 0);
+top:200px;
+}
+
+
+.picto{
+    position: relative;
+    z-index: 600;
+}
+
+.box:after {
+content: '';
+display: block;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(to bottom, rgba(#e8a, 1), rgba(#def, 0) 80%, rgba(white, .5));
+z-index: 11;
+transform: translate3d(0, 0, 0);
+}
+
+.pictogram_content {
+position: absolute;
+left: 220px;
+top: 380px;
+width: 100%;
+z-index: 1;
+line-height: 300px;
+text-align: center;
+transform: translate3d(0, 0, 0);
+color: black;
+text-transform: uppercase;
+font-family: 'Playfair Display', serif;
+letter-spacing: .4em;
+font-size: 24px;
+text-shadow: 0 1px 0 rgba(black, .1);
+text-indent: .3em;
+font-family: 'Tenada', sans-serif;
+}
+@keyframes drift {
+from { transform: rotate(0deg); }
+from { transform: rotate(360deg); }
+}
+
+#dda {
+    position: absolute;
+    top:325px;
+    left:820px;
+    height: 80%;
+}
+
+#search {
+    font-family: 'Tenada', sans-serif;
+}

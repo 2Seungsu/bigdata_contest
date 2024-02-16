@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신뢰도 분석</title>
+    <style>
+        .title {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            padding: 50px;
+        }
+
+        @keyframes gradient1 {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+        
+        .button_click {
+            position: relative;
+            border: none;
+            min-width: 200px;
+            min-height: 50px;
+            background: linear-gradient(
+                90deg,
+                rgba(129, 230, 217, 1) 0%,
+                rgba(79, 209, 197, 1) 100%
+            );
+            border-radius: 1000px;
+            color: darkslategray;
+            cursor: pointer;
+            box-shadow: 12px 12px 24px rgba(79, 209, 197, 0.64);
+            font-weight: 700;
+            transition: 0.3s;
+            margin-right: 15px;
+}
+
+        .contents, .res {
+            display: inline;
+            padding: 380px;
+            font-size: 25px;
+            font-family: 'Tenada', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px; /* Adjust the padding as needed */
+        }
+
+        .original, .result {
+            font-size: 15px;
+            width: 48%; /* Adjust the width as needed */
+            box-sizing: border-box; /* Include padding and border in the width */
+            border: 5px solid orange; /* Add a border for better visualization */
+            border-radius: 20px;
+            padding: 10px; /* Add padding for better spacing */
+        }
+
+        .result{
+            position: relative;
+            text-align: center;
+
+        }
+
+        .result img {
+            display: block;
+            margin: 0 auto;
+            width:100%;
+            /* border: 5px solid white; */
+            border-radius: 20px;
+
+        }
+
+        .result .child{
+            display: inline-block;
+            position: absolute;
+            top:200px;
+            left:370px;
+            transform: translate(-50%,0%);
+            font-size: 100px;
+            font-family: 'Tenada', sans-serif;
+            color: white;
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="title" style="font-size:30px; font-weight:bold;">
+        
+        {% for x in result %}
+
+            <button class="button_click" onclick="location.href='getlink?keyword={{x}}'">{{x}}</button>
+
+        {% endfor %}
+
+
+    </div>
+
+
+</body>
+</html>

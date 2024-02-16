@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Tenada';
+    src: url('../font/Tenada.ttf') format('truetype');
+}
+
+.result {
+    font-family: 'Tenada', sans-serif;
+}
+
+.child {
+    font-family: 'Tenada', sans-serif;
+}
